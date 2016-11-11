@@ -62,6 +62,12 @@ public class SaxParser {
             super.startElement(uri, localName, qName, attributes);
             if(localName.equals("book")){
                 book=new Book();
+                for(int i=0;i<attributes.getLength();i++){
+                    if(attributes.getQName(i).equals("id")){
+                        String id=attributes.getValue(i);
+                        book.setId(Integer.parseInt(id));
+                    }
+                }
             }
             stringBuilder.setLength(0);
         }
