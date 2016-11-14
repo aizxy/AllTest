@@ -6,10 +6,17 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.administrator.alltest.R;
+import com.example.administrator.alltest.domparserfor_xml.DomParser;
+import com.example.administrator.alltest.pullparserfor_xml.PullBookParser;
+
+import org.xml.sax.SAXException;
+import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+
+import javax.xml.parsers.ParserConfigurationException;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -37,6 +44,12 @@ public class XmlActivity extends AppCompatActivity {
             case R.id.saxbtn:
                 beginParser();
                 break;
+            case R.id.pullbtn:
+                pullParser();
+                break;
+            case R.id.dombtn:
+                domParser();
+                break;
         }
     }
 
@@ -51,6 +64,37 @@ public class XmlActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    private void pullParser(){
+        try {
+            InputStream in=getAssets().open("book.xml");
+            PullBookParser pullBookParser=new PullBookParser();
+            List<Book> books=pullBookParser.parser(in);
+            for(Book book:books){
+                Log.e("pullParser",book.toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void domParser(){
+        try {
+            InputStream in=getAssets().open("book.xml");
+            DomParser domParser=new DomParser();
+            List<Book> books=domParser.parse(in);
+            for(Book book:books){
+                Log.e("domparser",book.toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
     }
 }
