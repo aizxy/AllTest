@@ -25,13 +25,16 @@
         <activity android:name=".jsonparser.JsonActivity" />
         <activity android:name=".bluetooth.BluetoothActivity" />
         <activity android:name=".startactivityforresult.FirstActivity">
+
+        </activity>
+        <activity android:name=".startactivityforresult.SecondActivity" />
+        <activity android:name=".snackbar.SnackbarActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".startactivityforresult.SecondActivity" />
     </application>
 
 </manifest>
