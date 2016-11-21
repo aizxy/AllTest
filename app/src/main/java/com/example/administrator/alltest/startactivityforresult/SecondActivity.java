@@ -60,4 +60,25 @@ public class SecondActivity extends AppCompatActivity {
             finish();
         }
     };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        File path=getApplicationContext().getCacheDir();
+        File file=new File(path.getAbsolutePath()+"/object.adt");
+        try {
+            file.createNewFile();
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+            HeHe[] obj=new HeHe[list.size()];
+            list.toArray(obj);
+            oos.writeObject(obj);
+            oos.flush();
+            oos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Intent intent=new Intent();
+        setResult(0,intent);
+        finish();
+    }
 }
