@@ -31,4 +31,10 @@ dependencies {
 
     //snackbar的使用的依赖
     compile 'com.android.support:design:24.0.0'
+
+    //okhttp+mvp+Gson+eventBus
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    compile 'com.squareup.okhttp3:okhttp:3.4.2'
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'org.greenrobot:eventbus:3.0.0'
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/listview_iv"
+        android:paddingLeft="5dp"
+        android:background="@mipmap/ic_launcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/listview_author"
+        android:layout_toRightOf="@+id/listview_iv"
+        android:text="author"
+        android:paddingLeft="10dp"
+        android:layout_alignTop="@+id/listview_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/listview_title"
+        android:layout_toRightOf="@+id/listview_iv"
+        android:layout_alignBottom="@+id/listview_iv"
+        android:layout_marginLeft="20dp"
+        android:text="title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/listview_price"
+        android:text="price"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/listview_publisher"
+        android:layout_alignParentRight="true"
+        android:text="publisher"
+        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/listview_time"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/listview_title"
+        android:text="time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
