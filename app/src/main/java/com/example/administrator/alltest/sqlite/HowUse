@@ -110,3 +110,31 @@ while (!result.isAfterLast()) {
 SQLiteOpenHelper类介绍：
 SQLiteOpenHelper是SQLiteDatabase的一个帮助类，用来管理数据库的创建和版本的更新。
 一般是建立一个类继承它，并实现它的onCreate和onUpgrade方法。
+
+
+Android sqlite3数据库管理工具
+Android SDK的tools目录下提供了一个sqlite3.exe工具，这是一个简单的sqlite数据库管理工具。
+开发者可以方便的使用其对sqlite数据库进行命令行的操作。
+程序运行生成的*.db文件一般位于"/data/data/项目名(包括所处包名)/databases/*.db"，
+因此要对数据库文件进行操作需要先找到数据库文件：
+1、进入shell 命令
+adb shell
+2、找到数据库文件
+#cd data/data
+#ls                --列出所有项目
+#cd project_name   --进入所需项目名
+#cd databases
+#ls                --列出现寸的数据库文件
+3、进入数据库
+#sqlite3 test_db   --进入所需数据库
+会出现类似如下字样：
+SQLite version 3.6.22
+Enter ".help" for instructions
+Enter SQL statements terminated with a ";"
+sqlite>
+至此，可对数据库进行sql操作。
+4、sqlite常用命令
+>.databases        --产看当前数据库
+>.tables           --查看当前数据库中的表
+>.help             --sqlite3帮助
+>.schema            --各个表的生成语句

@@ -24,11 +24,9 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".jsonparser.JsonActivity" />
         <activity android:name=".bluetooth.BluetoothActivity" />
-        <activity android:name=".startactivityforresult.FirstActivity"></activity>
+        <activity android:name=".startactivityforresult.FirstActivity" />
         <activity android:name=".startactivityforresult.SecondActivity" />
-        <activity android:name=".snackbar.SnackbarActivity">
-
-        </activity>
+        <activity android:name=".snackbar.SnackbarActivity"></activity>
         <activity android:name=".okhttp_mvp_eventbus.BookActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,6 +34,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".sqlite.SQLiteActivity"></activity>
     </application>
 
 </manifest>
