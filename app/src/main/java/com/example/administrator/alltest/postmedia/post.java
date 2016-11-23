@@ -9,6 +9,9 @@ import java.net.URL;
  * Created by Administrator on 2016/11/23 0023.
  *
  * 来源：http://www.2cto.com/kf/201502/376362.html
+ *
+ *
+ * android拍照上传及本地上传的一个demo：http://www.open-open.com/lib/view/open1339985102455.html
  */
 
 public class post {
