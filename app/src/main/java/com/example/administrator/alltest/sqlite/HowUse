@@ -1,0 +1,112 @@
+数据库语句的使用：
+1 db.executeSQL(String sql);
+2 db.executeSQL(String sql, Object[] bindArgs);//sql语句中使用占位符，然后第二个参数是实际的参数集 。
+增删改各自的方法：
+1 db.insert(String table, String nullColumnHack, ContentValues values);
+2 db.update(String table, Contentvalues values, String whereClause, String whereArgs);
+3 db.delete(String table, String whereClause, String whereArgs);
+说明
+以上三个方法的第一个参数都是表示要操作的表名；
+insert中的第二个参数表示如果插入的数据每一列都为空的话，需要指定此行中某一列的名称，系统将此列设置为NULL，不至于出现错误；
+insert中的第三个参数是ContentValues类型的变量，是键值对组成的Map，key代表列名，value代表该列要插入的值；
+update的第二个参数也很类似，只不过它是更新该字段key为最新的value值，第三个参数whereClause表示WHERE表达式，
+比如“age > ? and age < ?”等，最后的whereArgs参数是占位符的实际参数值；
+delete方法的参数也是一样
+数据的添加：
+使用的是insert
+1 ContentValues cv = new ContentValues();//实例化一个ContentValues用来装载待插入的数据
+2 cv.put("title","you are beautiful");//添加title
+3 cv.put("weather","sun"); //添加weather
+4 cv.put("context","xxxx"); //添加context
+5 String publish = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+6 cv.put("publish ",publish); //添加publish
+7 db.insert("diary",null,cv);//执行插入操作
+使用execSQL
+String sql = "insert into user(username,password) values ('Jack Johnson','iLovePopMuisc');//插入操作的SQL语句
+db.execSQL(sql);//执行SQL语句
+
+数据的删除
+1
+String whereClause = "username=?";//删除的条件
+ String[] whereArgs = {"Jack Johnson"};//删除的条件参数
+ db.delete("user",whereClause,whereArgs);//执行删除
+ 2
+ String sql = "delete from user where username='Jack Johnson'";//删除操作的SQL语句
+ db.execSQL(sql);//执行删除操作
+
+ 数据的修改
+ 1、
+ ContentValues cv = new ContentValues();//实例化ContentValues
+ cv.put("password","iHatePopMusic");//添加要更改的字段及内容
+ String whereClause = "username=?";//修改条件
+ String[] whereArgs = {"Jack Johnson"};//修改条件的参数
+ db.update("user",cv,whereClause,whereArgs);//执行修改
+ 2、
+ String sql = "update user set password = 'iHatePopMusic' where username='Jack Johnson'";//修改的SQL语句
+ db.execSQL(sql);//执行修改
+
+ 数据的查询
+ 1 db.rawQuery(String sql, String[] selectionArgs);
+ 2 db.query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy);
+ 3 db.query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit);
+ 4 db.query(String distinct, String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit);
+参数说明
+table：表名称
+colums：表示要查询的列所有名称集
+selection：表示WHERE之后的条件语句，可以使用占位符
+selectionArgs：条件语句的参数数组
+groupBy：指定分组的列名
+having：指定分组条件,配合groupBy使用
+orderBy：y指定排序的列名
+limit：指定分页参数
+distinct：指定“true”或“false”表示要不要过滤重复值
+Cursor：返回值，相当于结果集ResultSet
+
+Curser对象的常用方法：
+ 1 c.move(int offset); //以当前位置为参考,移动到指定行
+ 2 c.moveToFirst();    //移动到第一行
+ 3 c.moveToLast();     //移动到最后一行
+ 4 c.moveToPosition(int position); //移动到指定行
+ 5 c.moveToPrevious(); //移动到前一行
+ 6 c.moveToNext();     //移动到下一行
+ 7 c.isFirst();        //是否指向第一条
+ 8 c.isLast();     //是否指向最后一条
+ 9 c.isBeforeFirst();  //是否指向第一条之前
+10 c.isAfterLast();    //是否指向最后一条之后
+11 c.isNull(int columnIndex);  //指定列是否为空(列基数为0)
+12 c.isClosed();       //游标是否已关闭
+13 c.getCount();       //总数据项数
+14 c.getPosition();    //返回当前游标所指向的行数
+15 c.getColumnIndex(String columnName);//返回某列名对应的列索引值
+16 c.getString(int columnIndex);   //返回当前行指定列的值
+例子使用：
+String[] params =  {12345,123456};
+Cursor cursor = db.query("user",columns,"ID=?",params,null,null,null);//查询并获得游标
+if(cursor.moveToFirst()){//判断游标是否为空
+    for(int i=0;i<cursor.getCount();i++){
+        cursor.move(i);//移动到指定记录
+        String username = cursor.getString(cursor.getColumnIndex("username");
+        String password = cursor.getString(cursor.getColumnIndex("password"));
+    }
+}
+使用rawQuery实现的带参数查询
+Cursor result=db.rawQuery("SELECT ID, name, inventory FROM mytable");
+//Cursor c = db.rawQuery("s name, inventory FROM mytable where ID=?",new Stirng[]{"123456"});
+result.moveToFirst();
+while (!result.isAfterLast()) {
+    int id=result.getInt(0);
+    String name=result.getString(1);
+    int inventory=result.getInt(2);
+    // do something useful with these
+    result.moveToNext();
+ }
+ result.close();
+
+&&&&&&最后当我们完成了对数据库的操作后，记得调用SQLiteDatabase的close()方法释放数据库连接，
+否则容易出现SQLiteException。
+上面就是SQLite的基本应用，但在实际开发中，为了能够更好的管理和维护数据库，
+我们会封装一个继承自SQLiteOpenHelper类的数据库操作类，然后以这个类为基础，再封装我们的业务逻辑方法。
+
+SQLiteOpenHelper类介绍：
+SQLiteOpenHelper是SQLiteDatabase的一个帮助类，用来管理数据库的创建和版本的更新。
+一般是建立一个类继承它，并实现它的onCreate和onUpgrade方法。
