@@ -1,0 +1,24 @@
+文件存储数据
+核心原理: Context提供了两个方法来打开数据文件里的文件IO流 FileInputStream openFileInput(String name); FileOutputStream(String name , int mode),这两个方法第一个参数 用于指定文件名，第二个参数指定打开文件的模式。具体有以下值可选：
+
+             MODE_PRIVATE：为默认操作模式，代表该文件是私有数据，只能被应用本身访问，在该模式下，写入的内容会覆盖原文件的内容，如果想把新写入的内容追加到原文件中。
+             可以使用Context.MODE_APPEND
+             MODE_APPEND：模式会检查文件是否存在，存在就往文件追加内容，否则就创建新文件。
+             MODE_WORLD_READABLE：表示当前文件可以被其他应用读取；
+             MODE_WORLD_WRITEABLE：表示当前文件可以被其他应用写入。
+
+ 除此之外，Context还提供了如下几个重要的方法：
+             getDir(String name , int mode):在应用程序的数据文件夹下获取或者创建name对应的子目录
+             File getFilesDir():获取该应用程序的数据文件夹得绝对路径
+             String[] fileList():返回该应用数据文件夹的全部文件
+
+ 读写sdcard上的文件
+ 其中读写步骤按如下进行:
+ 1、调用Environment的getExternalStorageState()方法判断手机上是否插了sd卡,且应用程序具有读写SD卡的权限，如下代码将返回true
+ Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)
+ 2、调用Environment.getExternalStorageDirectory()方法来获取外部存储器，也就是SD卡的目录,或者使用"/mnt/sdcard/"目录
+ 3、使用IO流操作SD卡上的文件
+ 注意点：手机应该已插入SD卡，对于模拟器而言，可通过mksdcard命令来创建虚拟存储卡
+            必须在AndroidManifest.xml上配置读写SD卡的权限
+ <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+ <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
