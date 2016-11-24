@@ -27,11 +27,13 @@
         <activity android:name=".startactivityforresult.FirstActivity" />
         <activity android:name=".startactivityforresult.SecondActivity" />
         <activity android:name=".snackbar.SnackbarActivity" />
-        <activity android:name=".okhttp_mvp_eventbus.BookActivity">
-        </activity>
+        <activity android:name=".okhttp_mvp_eventbus.BookActivity"></activity>
         <activity android:name=".sqlite.SQLiteActivity" />
         <activity android:name=".filesave.FileActivity" />
         <activity android:name=".fragment.FragmentActivity">
+
+        </activity>
+        <activity android:name=".camera.PictureActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
