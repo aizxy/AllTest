@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 
+import java.io.IOException;
+
 public class HomeActivity extends AppCompatActivity {
 
     @Override
@@ -16,6 +18,11 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent =new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY,1);
         startActivityForResult(intent,1);
+        try {
+            java.lang.Process process=Runtime.getRuntime().exec("su");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
