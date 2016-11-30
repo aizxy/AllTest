@@ -31,11 +31,12 @@
         <activity android:name=".sqlite.SQLiteActivity" />
         <activity android:name=".filesave.FileActivity" />
         <activity android:name=".fragment.FragmentActivity" />
-        <activity android:name=".camera.PictureActivity"></activity>
-        <activity android:name=".js_java.JsActivity">
-
+        <activity android:name=".camera.PictureActivity" />
+        <activity android:name=".js_java.JsActivity" />
+        <activity android:name=".view_skipdots.DotsViewActivity"></activity>
+        <activity android:name=".fullscreen_set.FullScreenActivity">
         </activity>
-        <activity android:name=".view_skipdots.DotsViewActivity">
+        <activity android:name=".ListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

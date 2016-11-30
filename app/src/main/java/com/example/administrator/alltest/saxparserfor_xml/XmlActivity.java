@@ -8,6 +8,7 @@ import android.view.View;
 import com.example.administrator.alltest.R;
 import com.example.administrator.alltest.domparserfor_xml.DomParser;
 import com.example.administrator.alltest.pullparserfor_xml.PullBookParser;
+import com.example.administrator.alltest.toast.ToastUtil;
 
 import org.xml.sax.SAXException;
 import org.xmlpull.v1.XmlPullParserException;
@@ -61,6 +62,7 @@ public class XmlActivity extends AppCompatActivity {
             for(Book book:listBooks){
                 Log.e("tag",book.toString());
             }
+            ToastUtil.showToast(getApplication(),listBooks.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -74,6 +76,7 @@ public class XmlActivity extends AppCompatActivity {
             for(Book book:books){
                 Log.e("pullParser",book.toString());
             }
+            ToastUtil.showToast(getApplication(),books.toString());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (XmlPullParserException e) {
@@ -89,6 +92,7 @@ public class XmlActivity extends AppCompatActivity {
             for(Book book:books){
                 Log.e("domparser",book.toString());
             }
+            ToastUtil.showToast(getApplication(),books.toString());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParserConfigurationException e) {
