@@ -83,7 +83,8 @@ public class FileActivity extends AppCompatActivity {
                     out.close(); // 关闭打印流
                 }
             }
-        } else { // SDCard不存在，使用Toast提示用户
+        } else {
+            // SDCard不存在，使用Toast提示用户
             Toast.makeText(this, "保存失败，SD卡不存在！", Toast.LENGTH_LONG).show();
         }
     }

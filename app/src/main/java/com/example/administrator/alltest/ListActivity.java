@@ -15,6 +15,7 @@ import com.example.administrator.alltest.fragment.FragmentActivity;
 import com.example.administrator.alltest.fullscreen_set.FullScreenActivity;
 import com.example.administrator.alltest.js_java.JsActivity;
 import com.example.administrator.alltest.okhttp_mvp_eventbus.BookActivity;
+import com.example.administrator.alltest.pullrefresh.RefreshActivity;
 import com.example.administrator.alltest.saxparserfor_xml.XmlActivity;
 import com.example.administrator.alltest.snackbar.SnackbarActivity;
 import com.example.administrator.alltest.sqlite.SQLiteActivity;
@@ -54,7 +55,8 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
                 new Demo("Fragment的简单使用",new Intent(this, FragmentActivity.class)),
                 new Demo("一种3d效果",new Intent(this, PictureActivity.class)),
                 new Demo("广播的使用",new Intent(this, BroadcastTestActivity.class)),
-                new Demo("BlueTooth",new Intent(this, BluetoothActivity.class))
+                new Demo("BlueTooth",new Intent(this, BluetoothActivity.class)),
+                new Demo("listview的下拉刷新",new Intent(this, RefreshActivity.class))
         };
     }
 

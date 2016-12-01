@@ -33,9 +33,8 @@
         <activity android:name=".fragment.FragmentActivity" />
         <activity android:name=".camera.PictureActivity" />
         <activity android:name=".js_java.JsActivity" />
-        <activity android:name=".view_skipdots.DotsViewActivity"></activity>
-        <activity android:name=".fullscreen_set.FullScreenActivity">
-        </activity>
+        <activity android:name=".view_skipdots.DotsViewActivity" />
+        <activity android:name=".fullscreen_set.FullScreenActivity"></activity>
         <activity android:name=".ListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,6 +42,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".pullrefresh.RefreshActivity"></activity>
     </application>
 
 </manifest>
