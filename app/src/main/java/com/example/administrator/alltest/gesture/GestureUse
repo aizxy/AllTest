@@ -1,0 +1,87 @@
+手势：
+一、概念
+
+手势：其实是指用户手指或触摸笔在屏幕上的连续触碰行为，Andoird对两种手势行为都提供了支持：
+
+Andorid提供了手势检测，并为手势检测提供了相应的监听器；
+
+Android允许开发者添加手势，并提供了相应的API识别用户手势；
+
+
+
+二、手势检测
+
+Gesture类：代表了一个手势检测器；
+
+GestureDectector.OnGestureListener类：代表一个监听器、负责对用户的手势行为提供响应；
+
+boolean onDown(MotionEvent e)：当触碰事件按下时触发的方法；
+
+boolean onFling(MotionEvent e1,MotionEvent e2,float velocityX,float velocityY)：
+当用户在触摸屏上”拖过”时触发该方法，velocityX，velocityY代表“拖过”动作的横向、纵向上的速度；
+
+abstract void onLongPress(MotionEvent e)：当用户在屏幕上长按时触发该方法；
+
+abstract void onScroll(MotionEvent e1,MotionEvent e2,float distanceX,float diastanceY)：
+当用户在屏幕上“滚动”时触发该方法；
+
+void onShowPress(MotionEvent e)：当用户在屏幕上按下，而且还未移动和松动的时候触发该方法；
+
+boolean onSingleTapUp(MotionEvent e)：当用户在触摸屏上的轻击事件将会触发该方法；
+
+
+
+三、使用步骤
+
+创建一个GestureDetector对象，创建对象时候必须创建一个GestureDectector.OnGestureListener监听器实例；
+
+为应用程序的Activity（偶尔也可以为特定组件）的TouchEvent事件绑定监听器，
+在事件处理中制定把Activity（或特定组件）上的TouchEvent事件交给GestureDetector处理；
+
+四、增加手势
+
+Android除了提供了手势之外，还允许应用程序把用户手势（多个持续的触摸事件在屏幕上形成特定的形状）添加到制定文件中，
+以备以后使用；
+
+GestureLibrary类：代表手势库，并提供了GestureLibraries工具来创建手势库，提供了如下4个静态方法从不同的位置加载手势：
+
+static GestureLibrary from(String path)：从path代表的文件中加载手势库；
+
+static GestureLibrary fromFile(File path)：从path代表的文件加载手势库；
+
+static GestureLibrary fromPrivateFile(Context context,String name)：从制定应用程序的数据文件夹中name文件中加载手势库；
+
+static GestureLibrary fromRawResoure(Context context,int resourceId)：从resourceId所代表的资源中加载手势库；
+
+
+
+获取GestureLibrary对象之后，该对象提供了如下方法来添加手势和识别手势：
+
+void addGesture(String entryName,Gesture gesture)：添加一个名为name的手势；
+
+Set<String> getGestureEntries()：获取手势库中所有的手势名称；
+
+ArrayList<Guesture> getGestures(String entryName)：获取entryName名称对应的全部手势；
+
+ArrayList<Prediction> recongize(Guesture gesture)：从当前手势库中识别与gesture匹配的全部手势；
+
+void removeEntry(String entryName)：删除手势库中entryName对应的手势；
+
+void removeGesture(String entryName,Gesture gesture)：删除手势库中entryName，gesture对应的手势库；
+
+boolean save()：当向手势库中添加手势或从中删除手势后调用该方法保存手势库；
+
+
+
+为了监听GestureOverlayView组件上的手势事件，Android为GestureOverlayView提供了OnGestureLisnter、
+OnGesturePerformedListener、
+OnGesturingListener三个监听器接口，分别用于响应手势事件开始、结束、完成、取消事件；
+
+
+五、识别用户手势
+
+recoginze(Gesture guesture)方法：识别手势，该方法将会返回该手势库中所有与ges匹配的手势—两个手势的图形越相似，
+相似度越高；
+
+recogniza(Gusture ges)方法返回为ArrayList<Prediction>，启动Prediction封装了手势的匹配信息，
+Predictin对象的name属性代表了匹配的手势名，score属性代表了手势的相似度；
