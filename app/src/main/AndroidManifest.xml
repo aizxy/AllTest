@@ -44,7 +44,8 @@
         </activity>
         <activity android:name=".pullrefresh.RefreshActivity" />
         <activity android:name=".gesture.GestureDemoActivity" />
-        <activity android:name=".gesture.GestureSaveActivity"></activity>
+        <activity android:name=".gesture.GestureSaveActivity" />
+        <activity android:name=".turn_the_view.PageTurnActivity"></activity>
     </application>
 
 </manifest>

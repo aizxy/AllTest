@@ -20,6 +20,7 @@ import com.example.administrator.alltest.saxparserfor_xml.XmlActivity;
 import com.example.administrator.alltest.snackbar.SnackbarActivity;
 import com.example.administrator.alltest.sqlite.SQLiteActivity;
 import com.example.administrator.alltest.startactivityforresult.FirstActivity;
+import com.example.administrator.alltest.turn_the_view.PageTurnActivity;
 import com.example.administrator.alltest.view_skipdots.DotsViewActivity;
 
 import butterknife.BindView;
@@ -56,7 +57,8 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
                 new Demo("一种3d效果",new Intent(this, PictureActivity.class)),
                 new Demo("广播的使用",new Intent(this, BroadcastTestActivity.class)),
                 new Demo("BlueTooth",new Intent(this, BluetoothActivity.class)),
-                new Demo("listview的下拉刷新",new Intent(this, RefreshActivity.class))
+                new Demo("listview的下拉刷新",new Intent(this, RefreshActivity.class)),
+                new Demo("翻页",new Intent(this, PageTurnActivity.class))
         };
     }
 
