@@ -12,6 +12,8 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -45,7 +47,9 @@
         <activity android:name=".pullrefresh.RefreshActivity" />
         <activity android:name=".gesture.GestureDemoActivity" />
         <activity android:name=".gesture.GestureSaveActivity" />
-        <activity android:name=".turn_the_view.PageTurnActivity"></activity>
+        <activity android:name=".turn_the_view.PageTurnActivity" />
+        <activity android:name=".socket.SendActivity" />
+        <activity android:name=".loadingview.ProgressActivity"></activity>
     </application>
 
 </manifest>

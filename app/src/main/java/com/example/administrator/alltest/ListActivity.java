@@ -14,6 +14,7 @@ import com.example.administrator.alltest.camera.PictureActivity;
 import com.example.administrator.alltest.fragment.FragmentActivity;
 import com.example.administrator.alltest.fullscreen_set.FullScreenActivity;
 import com.example.administrator.alltest.js_java.JsActivity;
+import com.example.administrator.alltest.loadingview.ProgressActivity;
 import com.example.administrator.alltest.okhttp_mvp_eventbus.BookActivity;
 import com.example.administrator.alltest.pullrefresh.RefreshActivity;
 import com.example.administrator.alltest.saxparserfor_xml.XmlActivity;
@@ -58,7 +59,8 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
                 new Demo("广播的使用",new Intent(this, BroadcastTestActivity.class)),
                 new Demo("BlueTooth",new Intent(this, BluetoothActivity.class)),
                 new Demo("listview的下拉刷新",new Intent(this, RefreshActivity.class)),
-                new Demo("翻页",new Intent(this, PageTurnActivity.class))
+                new Demo("翻页",new Intent(this, PageTurnActivity.class)),
+                new Demo("Loading Progress",new Intent(this, ProgressActivity.class))
         };
     }
 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:PieProgress="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_progress"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.example.administrator.alltest.loadingview.PieProgress
+        android:id="@+id/mProgress1"
+        android:layout_marginLeft="20dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
+    <com.example.administrator.alltest.loadingview.PieProgress
+        android:id="@+id/mProgress2"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        PieProgress:foregroundColor="#339BB9"
+        PieProgress:backgroundColor="#ff4444"/>
+    <Button
+        android:id="@+id/btn1"
+        android:text="start"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:textSize="28sp"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
